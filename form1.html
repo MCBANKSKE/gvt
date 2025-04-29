@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Public Views Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f0f2f5;
+    }
+
+    .form-header {
+  background: #ffffff;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 2px solid #007bff;
+  margin-bottom: 30px;
+}
+
+.logo-section img {
+  max-height: 80px;
+  margin-bottom: 15px;
+}
+
+.header-text h1 {
+  font-size: 20px;
+  margin: 5px 0;
+  color: #222;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.header-text h2 {
+  font-size: 18px;
+  color: #333;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.header-text p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #444;
+}
+
+
+    .modal-container {
+      max-width: 700px;
+      margin: 50px auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .modal-step {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .modal-step.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-group {
+      text-align: right;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .back-btn {
+      background-color: #6c757d;
+    }
+
+    .back-btn:hover {
+      background-color: #545b62;
+    }
+
+    .note {
+      font-style: italic;
+      color: #666;
+      margin-top: 15px;
+    }
+
+    .thank-you {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 30px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+<div class="form-header">
+  <div class="logo-section">
+    <img src="logo.png" alt="National Assembly Logo">
+  </div>
+  <div class="header-text">
+    <h1>THIRTEENTH PARLIAMENT – FOURTH SESSION (2025)</h1>
+    <h2>THE NATIONAL ASSEMBLY</h2>
+    <p><strong>IN THE MATTER OF CONSIDERATION BY THE NATIONAL ASSEMBLY OF THE</strong><br>
+      <strong>CONSTITUTION OF KENYA (AMENDMENT) BILL</strong><br>
+      (NATIONAL ASSEMBLY BILL NO. 4 OF 2025)
+    </p>
+    <p><em>PUBLIC VIEWS TEMPLATE</em><br>
+      <span style="font-size: 14px;">(Pursuant to Articles 118(1)(b) and 256(2) of the Constitution)</span>
+    </p>
+  </div>
+</div>
+
+<div class="modal-container">
+  <form id="formSteps">
+    <!-- Step 1 -->
+    <div class="modal-step active">
+      <h2>Section A – Personal Information</h2>
+      <div class="form-group">
+        <label for="name">1. Name</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="sex">2. Sex</label>
+        <select id="sex" required>
+          <option value="">Select...</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="btn-group">
+        <button type="button" onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="modal-step">
+      <h2>Section A – Personal Information (cont.)</h2>
+      <div class="form-group">
+        <label for="constituency">3. Constituency</label>
+        <input type="text" id="constituency" required>
+      </div>
+      <div class="form-group">
+        <label for="county">4. County</label>
+        <input type="text" id="county" required>
+      </div>
+      <div class="form-group">
+        <label for="id">5. National ID / Passport Number</label>
+        <input type="text" id="id" required>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="back-btn" onclick="prevStep()">Back</button>
+        <button type="button" onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="modal-step">
+      <h2>Section B – Object of the Bill</h2>
+      <div class="form-group">
+        <label>The Constitution of Kenya (Amendment) Bill (No. 4 of 2025) seeks to:</label>
+        <textarea rows="6" readonly>
+(a) Establish the National Government Constituencies Fund;
+(b) Create the Senate Oversight Fund;
+(c) Provide for the National Government Affirmative Action Fund.
+        </textarea>
+      </div>
+      <div class="form-group">
+        <label>Your View / Comments</label>
+        <textarea rows="5" placeholder="Enter your comments here..." required></textarea>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="back-btn" onclick="prevStep()">Back</button>
+        <button type="button" onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="modal-step">
+      <h2>Section C – Views on the Provision for the Funds</h2>
+      <div class="form-group">
+        <label>(a) Your views on the National Government Constituencies Fund:</label>
+        <textarea placeholder="Write your views..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label>(b) Your views on the Senate Oversight Fund:</label>
+        <textarea placeholder="Write your views..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label>(c) Your views on the National Government Affirmative Action Fund:</label>
+        <textarea placeholder="Write your views..." required></textarea>
+      </div>
+      <div class="note">
+        Appreciation: The National Assembly appreciates your participation in this process.  
+        <br>“For the Welfare of Society and the just Government of the People”
+      </div>
+      <div class="btn-group">
+        <button type="button" class="back-btn" onclick="prevStep()">Back</button>
+        <button type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  let currentStep = 0;
+  const steps = document.querySelectorAll('.modal-step');
+
+  function showStep(index) {
+    steps.forEach((step, i) => {
+      step.classList.toggle('active', i === index);
+    });
+  }
+
+  function nextStep() {
+    if (currentStep < steps.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  }
+
+  document.getElementById('formSteps').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert("Form submitted successfully!");
+    
+  });
+</script>
+
+</body>
+</html>
